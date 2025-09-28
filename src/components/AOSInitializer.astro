@@ -1,0 +1,32 @@
+---
+// Componente para inicializar AOS
+---
+
+<script>
+  import AOS from 'aos';
+  import 'aos/dist/aos.css';
+
+  // Función para inicializar AOS
+  function initAOS() {
+    AOS.init({
+      duration: 800,
+      easing: 'ease-in-out',
+      once: true,
+      offset: 100,
+      delay: 0,
+      disable: false,
+    });
+  }
+
+  // Inicializar cuando el DOM esté listo
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initAOS);
+  } else {
+    initAOS();
+  }
+
+  // Refrescar AOS en navegación
+  document.addEventListener('astro:page-load', () => {
+    AOS.refresh();
+  });
+</script>

@@ -1,0 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Fustat&display=swap');
+
+@import "tailwindcss";
+
+/* No blur from body, keeping original gradients */
+body {
+  /* Your existing radial gradients */
+}
+
+/* Removed #background-recursos rule */

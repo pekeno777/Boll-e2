@@ -1,0 +1,63 @@
+<section id="hero" class="relative overflow-hidden py-10" style="
+    background-image: url('/Recurso1.png'), url('/Recurso2.png');
+    background-repeat: no-repeat;
+    background-position: 10% 15%, 90% 85%;
+    background-size: 200px 200px, 250px 250px;
+  ">
+    <style>
+      @media (min-width: 768px) {
+        section {
+          background-position: 5% 10%, 95% 90% !important;
+          background-size: 350px 350px, 450px 450px !important;
+        }
+      }
+      @media (max-width: 767px) {
+        section {
+          background-position: 15% 5%, 85% 95% !important;
+          background-size: 150px 150px, 180px 180px !important;
+        }
+      }
+    </style>
+    <!-- Background decorative elements -->
+    <div class="absolute inset-0 -z-10">
+      <div class="absolute top-20 right-20 w-72 h-72 bg-gradient-to-br from-blue-400/20 to-purple-600/20 rounded-full blur-3xl animate-pulse"></div>
+      <div class="absolute bottom-32 left-16 w-64 h-64 bg-gradient-to-br from-cyan-400/20 to-blue-600/20 rounded-full blur-3xl animate-pulse" style="animation-delay: 2s;"></div>
+    </div>
+
+    <h1 class="text-4xl md:text-7xl font-serif leading-tight">Revolutionizing <span class="bg-gradient-to-r from-blue-500 via-purple-600 to-cyan-500 bg-clip-text text-transparent">BPO</span> with <br> <span class="bg-gradient-to-r from-violet-500 via-pink-500 to-orange-500 bg-clip-text text-transparent">AI-Powered</span> Agents.
+    </h1>
+    <p class="mt-4 px-5 text-lg md:text-xl font-sans">
+      Enhance efficiency, reduce costs, and scale effortlessly by leveraging <br> intelligent AI automation for your business processes.
+    </p>
+    <div class="mt-8 flex justify-center space-x-4">
+      <a href="#about" class="border border-brand-text text-brand-text font-bold py-3 px-8 rounded-full hover:bg-[#252525] hover:text-white transition-colors">
+        Learn more
+      </a>
+      <a href="#portfolio" class="border border-brand-text text-brand-text font-bold py-3 px-8 rounded-full hover:bg-[#252525] hover:text-white transition-colors">
+        Portfolio
+      </a>
+    </div>
+
+    <!-- Tarjeta de comparación -->
+    <div class="mt-12 flex justify-center">
+      <div class="bg-white/60 backdrop-blur-lg rounded-3xl p-4 md:p-7 shadow-xl">
+        <div class="flex space-x-0 md:space-x-5 text-center">
+          <!-- Uptime -->
+          <div class="py-2 w-26 md:w-32 flex flex-col items-center justify-between">
+            <span class="text-3xl font-w-700">99<i class="text-xl">%</i></span>
+            <span class="text-base">Uptime</span>
+          </div>
+          <!-- Support -->
+          <div class="py-2 w-26 md:w32 flex flex-col items-center justify-between">
+              <span class="text-3xl font-w-700">24/7</span>
+              <span class="text-base">Support</span>
+          </div>
+          <!-- Contries -->
+          <div class="py-2 w-26 md:w-32 flex flex-col items-center justify-between">
+              <span class="text-3xl font-w-700"><i class="text-xl">+</i>150</span>
+              <span class="text-base">Countries</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
