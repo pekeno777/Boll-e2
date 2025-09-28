@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { ArrowRight, Bot, Headphones, TrendingUp, DollarSign, Target, Plus, Minus } from 'lucide-react';
+import { ArrowRight, Bot, Headphones, TrendingUp, DollarSign, Target, Plus, Minus, X } from 'lucide-react';
 
 import CustomerServiceFlowchart from '/src/assets/CostumerService.svg?react';
 import MarketingFlowchart from '/src/assets/Marketing.drawio.svg?react';
@@ -9,21 +9,190 @@ import customerServiceImageUrl from '/src/assets/CostumerService.svg?url';
 import marketingImageUrl from '/src/assets/Marketing.drawio.svg?url';
 import salesImageUrl from '/src/assets/Sales.drawio.svg?url';
 
-// Datos de ejemplo para los protocolos. Asocia el id del SVG con la información.
+// Comprehensive protocol data for all services
 const protocolData = {
-  "protocolo-inicio": {
-    title: "Protocolo de Inicio",
-    description: "Este es el primer paso en el flujo de servicio al cliente, donde se recibe la consulta inicial del cliente.",
-    steps: ["Recepción de la llamada/mensaje.", "Identificación del cliente.", "Registro del caso en el sistema."]
+  // Customer Service Protocols
+  "customer-greeting": {
+    title: "Customer Greeting Protocol",
+    description: "Initial customer contact and welcome procedure to establish rapport and gather basic information.",
+    steps: [
+      "Greet customer within 3 seconds of contact",
+      "Introduce yourself and the company",
+      "Ask how you can assist them today",
+      "Listen actively to their response"
+    ],
+    category: "Customer Service"
   },
-  "protocolo-verificacion": {
-    title: "Protocolo de Verificación",
-    description: "Proceso para verificar la identidad del cliente y la validez de su solicitud.",
-    steps: ["Solicitud de información personal.", "Confirmación de datos en el sistema.", "Validación de la cuenta."]
+  "issue-identification": {
+    title: "Issue Identification Protocol",
+    description: "Systematic approach to understanding and categorizing customer issues for efficient resolution.",
+    steps: [
+      "Ask clarifying questions about the issue",
+      "Categorize the problem type",
+      "Assess urgency level (Low/Medium/High/Critical)",
+      "Document issue details in the system"
+    ],
+    category: "Customer Service"
   },
-  // Añade más datos de protocolos según los IDs de tus SVGs
-};
+  "solution-research": {
+    title: "Solution Research Protocol",
+    description: "Process for finding appropriate solutions using knowledge base and escalation procedures.",
+    steps: [
+      "Search knowledge base for similar issues",
+      "Review previous case history if available",
+      "Consult with team lead if needed",
+      "Prepare solution options for customer"
+    ],
+    category: "Customer Service"
+  },
+  "resolution-implementation": {
+    title: "Resolution Implementation Protocol",
+    description: "Step-by-step process for implementing solutions and ensuring customer satisfaction.",
+    steps: [
+      "Explain the solution clearly to the customer",
+      "Implement the solution step by step",
+      "Verify the solution works as expected",
+      "Confirm customer satisfaction"
+    ],
+    category: "Customer Service"
+  },
+  "follow-up": {
+    title: "Follow-up Protocol",
+    description: "Post-resolution procedures to ensure lasting customer satisfaction and prevent future issues.",
+    steps: [
+      "Schedule follow-up contact if necessary",
+      "Send resolution summary via email",
+      "Update customer record with resolution details",
+      "Monitor for any recurring issues"
+    ],
+    category: "Customer Service"
+  },
 
+  // Marketing Protocols
+  "lead-qualification": {
+    title: "Lead Qualification Protocol",
+    description: "Process for evaluating and scoring potential leads based on predefined criteria.",
+    steps: [
+      "Gather demographic and firmographic data",
+      "Assess budget and decision-making authority",
+      "Evaluate timeline and urgency",
+      "Score lead using BANT criteria"
+    ],
+    category: "Marketing"
+  },
+  "campaign-setup": {
+    title: "Campaign Setup Protocol",
+    description: "Comprehensive process for creating and launching marketing campaigns across multiple channels.",
+    steps: [
+      "Define campaign objectives and KPIs",
+      "Identify target audience segments",
+      "Create campaign content and assets",
+      "Set up tracking and analytics"
+    ],
+    category: "Marketing"
+  },
+  "content-creation": {
+    title: "Content Creation Protocol",
+    description: "Standardized approach to creating engaging and brand-consistent marketing content.",
+    steps: [
+      "Research target audience preferences",
+      "Develop content strategy and calendar",
+      "Create and review content drafts",
+      "Optimize content for SEO and engagement"
+    ],
+    category: "Marketing"
+  },
+  "performance-analysis": {
+    title: "Performance Analysis Protocol",
+    description: "Data-driven approach to measuring and optimizing marketing campaign effectiveness.",
+    steps: [
+      "Collect performance data from all channels",
+      "Analyze key metrics and conversion rates",
+      "Identify optimization opportunities",
+      "Generate actionable insights and recommendations"
+    ],
+    category: "Marketing"
+  },
+  "audience-segmentation": {
+    title: "Audience Segmentation Protocol",
+    description: "Process for dividing target market into distinct groups for personalized marketing approaches.",
+    steps: [
+      "Analyze customer data and behavior patterns",
+      "Define segmentation criteria",
+      "Create detailed buyer personas",
+      "Develop targeted messaging for each segment"
+    ],
+    category: "Marketing"
+  },
+
+  // Sales Protocols
+  "prospect-research": {
+    title: "Prospect Research Protocol",
+    description: "Comprehensive research process to understand prospects before initial contact.",
+    steps: [
+      "Research company background and industry",
+      "Identify key decision makers and influencers",
+      "Analyze prospect's current challenges",
+      "Prepare personalized approach strategy"
+    ],
+    category: "Sales"
+  },
+  "initial-contact": {
+    title: "Initial Contact Protocol",
+    description: "Best practices for making first contact with potential customers.",
+    steps: [
+      "Craft personalized opening message",
+      "Establish credibility and rapport",
+      "Present clear value proposition",
+      "Schedule discovery meeting"
+    ],
+    category: "Sales"
+  },
+  "needs-assessment": {
+    title: "Needs Assessment Protocol",
+    description: "Systematic approach to understanding customer needs and pain points.",
+    steps: [
+      "Ask open-ended discovery questions",
+      "Listen actively and take detailed notes",
+      "Identify specific pain points and challenges",
+      "Quantify impact and urgency of needs"
+    ],
+    category: "Sales"
+  },
+  "proposal-development": {
+    title: "Proposal Development Protocol",
+    description: "Process for creating compelling and customized sales proposals.",
+    steps: [
+      "Summarize customer needs and requirements",
+      "Develop tailored solution recommendations",
+      "Create detailed pricing and implementation plan",
+      "Include case studies and testimonials"
+    ],
+    category: "Sales"
+  },
+  "closing-techniques": {
+    title: "Closing Techniques Protocol",
+    description: "Proven methods for successfully closing sales deals and overcoming objections.",
+    steps: [
+      "Identify buying signals and readiness",
+      "Address any remaining objections",
+      "Present clear next steps and timeline",
+      "Secure commitment and finalize agreement"
+    ],
+    category: "Sales"
+  },
+  "deal-management": {
+    title: "Deal Management Protocol",
+    description: "Process for managing sales opportunities through the entire sales pipeline.",
+    steps: [
+      "Update CRM with all interaction details",
+      "Set follow-up reminders and tasks",
+      "Coordinate with internal teams as needed",
+      "Monitor deal progress and probability"
+    ],
+    category: "Sales"
+  }
+};
 
 const getColorClasses = (color: string) => {
   const colors = {
@@ -75,7 +244,6 @@ const ServiceCatalog = () => {
   const [protocolModalOpen, setProtocolModalOpen] = useState(false);
   const [selectedProtocol, setSelectedProtocol] = useState<any>(null);
 
-
   const openModal = (imageSrc: string) => {
     setModalImage(imageSrc);
     setModalOpen(true);
@@ -88,7 +256,7 @@ const ServiceCatalog = () => {
     setZoomLevel(1);
   };
 
-    const handleZoomIn = () => {
+  const handleZoomIn = () => {
     setZoomLevel((prevZoom) => Math.min(prevZoom + 0.2, 3));
   };
 
@@ -98,11 +266,26 @@ const ServiceCatalog = () => {
 
   const handleFlowchartClick = (event: React.MouseEvent<SVGSVGElement>) => {
     const target = event.target as SVGElement;
-    const id = target.id || target.parentElement?.id;
+    let clickedElement = target;
+    
+    // Search up the DOM tree to find an element with an ID
+    while (clickedElement && !clickedElement.id) {
+      clickedElement = clickedElement.parentElement as SVGElement;
+      if (!clickedElement || clickedElement.tagName === 'svg') break;
+    }
+    
+    const id = clickedElement?.id;
+    
     if (id && protocolData[id as keyof typeof protocolData]) {
       setSelectedProtocol(protocolData[id as keyof typeof protocolData]);
       setProtocolModalOpen(true);
+      event.stopPropagation(); // Prevent modal from opening
     }
+  };
+
+  const closeProtocolModal = () => {
+    setProtocolModalOpen(false);
+    setSelectedProtocol(null);
   };
 
   const services = [
@@ -129,7 +312,7 @@ const ServiceCatalog = () => {
       ],
       color: "violet",
       icon: Headphones,
-      flowchart: CustomerServiceFlowchart, // Componente SVG importado
+      flowchart: CustomerServiceFlowchart,
       flowchartImage: customerServiceImageUrl,
       protocolLink: "#customer-service-protocols",
     },
@@ -154,7 +337,7 @@ const ServiceCatalog = () => {
       ],
       color: "cyan",
       icon: TrendingUp,
-      flowchart: MarketingFlowchart, // Componente SVG importado
+      flowchart: MarketingFlowchart,
       flowchartImage: marketingImageUrl,
       protocolLink: "#marketing-protocols",
     },
@@ -178,7 +361,7 @@ const ServiceCatalog = () => {
       ],
       color: "purple",
       icon: DollarSign,
-      flowchart: SalesFlowchart, // Componente SVG importado
+      flowchart: SalesFlowchart,
       flowchartImage: salesImageUrl,
       protocolLink: "#sales-protocols",
     },
@@ -317,19 +500,24 @@ const ServiceCatalog = () => {
               </div>
             </div>
 
-            {/* Flowchart Section */}
+            {/* Interactive Flowchart Section */}
             <div className="mt-16 text-center">
-              <h4 className="text-2xl font-bold font-sans text-brand-text mb-8">Service Workflow</h4>
+              <h4 className="text-2xl font-bold font-sans text-brand-text mb-4">Interactive Service Workflow</h4>
+              <p className="text-gray-600 mb-8">Click on any element in the flowchart to view detailed protocols and procedures.</p>
               <div className="bg-gray-100/50 backdrop-blur-sm p-8 rounded-lg border border-gray-200 min-h-[300px] flex items-center justify-center overflow-auto">
                 {FlowchartComponent ? (
                     <div className='relative'>
                         <FlowchartComponent 
                             onClick={handleFlowchartClick} 
-                            className="max-w-full h-auto cursor-pointer"
+                            className="max-w-full h-auto cursor-pointer hover:opacity-90 transition-opacity"
+                            style={{ 
+                              filter: 'drop-shadow(0 4px 6px rgba(0, 0, 0, 0.1))',
+                            }}
                         />
                          <button 
                             onClick={() => openModal(services[activeService].flowchartImage)}
-                            className="absolute bottom-2 right-2 bg-gray-700 text-white p-2 rounded-full shadow-md hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-500"
+                            className="absolute bottom-2 right-2 bg-gray-700 text-white p-2 rounded-full shadow-md hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-500 transition-colors"
+                            title="View full size"
                         >
                             <Plus className="w-5 h-5" />
                         </button>
@@ -347,43 +535,44 @@ const ServiceCatalog = () => {
                     rel="noopener noreferrer"
                     className="border border-brand-text text-brand-text font-bold py-3 px-8 rounded-full hover:bg-[#252525] hover:text-white transition-all duration-300 inline-flex items-center mx-auto"
                   >
-                    Protocols
+                    View All Protocols
                     <ArrowRight className="ml-3 h-5 w-5" />
                   </a>
                 )}
               </div>
             </div>
-
-            
           </div>
         </div>
       </div>
 
+     {/* Full Size Modal */}
      {modalOpen && (
         <div 
           className="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50 p-4"
           onClick={closeModal}
         >
           <div 
-            className="relative bg-white p-4 rounded-lg max-w-3xl max-h-[90vh] overflow-auto"
+            className="relative bg-white p-4 rounded-lg max-w-5xl max-h-[90vh] overflow-auto"
             onClick={(e) => e.stopPropagation()}
           >
             <button 
-              className="absolute top-2 right-2 text-gray-800 text-3xl font-bold"
+              className="absolute top-2 right-2 text-gray-800 text-3xl font-bold hover:text-gray-600 transition-colors z-20"
               onClick={closeModal}
             >
-              &times;
+              <X className="w-8 h-8" />
             </button>
             <div className="absolute top-2 left-2 flex space-x-2 z-10">
               <button 
                 onClick={handleZoomIn}
-                className="bg-gray-700 text-white p-2 rounded-full shadow-md hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-500"
+                className="bg-gray-700 text-white p-2 rounded-full shadow-md hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-500 transition-colors"
+                title="Zoom in"
               >
                 <Plus className="w-5 h-5" />
               </button>
               <button 
                 onClick={handleZoomOut}
-                className="bg-gray-700 text-white p-2 rounded-full shadow-md hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-500"
+                className="bg-gray-700 text-white p-2 rounded-full shadow-md hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-500 transition-colors"
+                title="Zoom out"
               >
                 <Minus className="w-5 h-5" />
               </button>
@@ -398,35 +587,69 @@ const ServiceCatalog = () => {
         </div>
       )}
 
-        {/* Protocol Modal */}
-        {protocolModalOpen && selectedProtocol && (
-            <div 
-            className="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50 p-4"
-            onClick={() => setProtocolModalOpen(false)}
+      {/* Protocol Detail Modal */}
+      {protocolModalOpen && selectedProtocol && (
+        <div 
+          className="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50 p-4"
+          onClick={closeProtocolModal}
+        >
+          <div 
+            className="relative bg-white p-8 rounded-xl max-w-2xl w-full max-h-[80vh] overflow-y-auto shadow-2xl"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <button 
+              className="absolute top-4 right-4 text-gray-500 hover:text-gray-700 transition-colors"
+              onClick={closeProtocolModal}
             >
-            <div 
-                className="relative bg-white p-8 rounded-lg max-w-lg w-full"
-                onClick={(e) => e.stopPropagation()}
-            >
-                <button 
-                className="absolute top-2 right-2 text-gray-800 text-3xl font-bold"
-                onClick={() => setProtocolModalOpen(false)}
-                >
-                &times;
-                </button>
-                <h3 className="text-2xl font-bold mb-4">{selectedProtocol.title}</h3>
-                <p className="text-gray-600 mb-4">{selectedProtocol.description}</p>
-                <div>
-                <h4 className="font-bold mb-2">Pasos:</h4>
-                <ul className="list-disc list-inside">
-                    {selectedProtocol.steps.map((step: string, index: number) => (
-                    <li key={index} className="text-gray-600">{step}</li>
-                    ))}
-                </ul>
-                </div>
+              <X className="w-6 h-6" />
+            </button>
+            
+            <div className="mb-4">
+              <span className={`inline-block px-3 py-1 rounded-full text-sm font-medium mb-4 ${
+                selectedProtocol.category === 'Customer Service' ? 'bg-violet-100 text-violet-800' :
+                selectedProtocol.category === 'Marketing' ? 'bg-cyan-100 text-cyan-800' :
+                'bg-purple-100 text-purple-800'
+              }`}>
+                {selectedProtocol.category}
+              </span>
             </div>
+            
+            <h3 className="text-3xl font-bold mb-4 text-gray-800">{selectedProtocol.title}</h3>
+            <p className="text-gray-600 mb-6 text-lg leading-relaxed">{selectedProtocol.description}</p>
+            
+            <div>
+              <h4 className="text-xl font-bold mb-4 text-gray-800">Implementation Steps:</h4>
+              <ol className="space-y-3">
+                {selectedProtocol.steps.map((step: string, index: number) => (
+                  <li key={index} className="flex items-start">
+                    <span className={`inline-flex items-center justify-center w-8 h-8 rounded-full text-white text-sm font-bold mr-4 flex-shrink-0 ${
+                      selectedProtocol.category === 'Customer Service' ? 'bg-violet-500' :
+                      selectedProtocol.category === 'Marketing' ? 'bg-cyan-500' :
+                      'bg-purple-500'
+                    }`}>
+                      {index + 1}
+                    </span>
+                    <span className="text-gray-700 leading-relaxed pt-1">{step}</span>
+                  </li>
+                ))}
+              </ol>
             </div>
-        )}
+            
+            <div className="mt-8 pt-6 border-t border-gray-200">
+              <button
+                onClick={closeProtocolModal}
+                className={`w-full py-3 px-6 rounded-lg font-semibold transition-colors ${
+                  selectedProtocol.category === 'Customer Service' ? 'bg-violet-500 hover:bg-violet-600' :
+                  selectedProtocol.category === 'Marketing' ? 'bg-cyan-500 hover:bg-cyan-600' :
+                  'bg-purple-500 hover:bg-purple-600'
+                } text-white`}
+              >
+                Close Protocol Details
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </section>
   )
 }
